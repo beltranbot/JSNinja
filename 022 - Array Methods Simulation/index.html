@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Array Method Simulation</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<input type="text" id="first" />
+	<input type="text" id="second" />
+	<ul id="results"></ul>
+
+	<script>
+
+		var elems = {
+			length: 0,
+			add: function(elem){
+				Array.prototype.push.call(this, elem);
+			},
+
+			gather: function(id){
+				this.add(document.getElementById(id));
+			}
+		};
+
+		elems.gather("first");
+		assert(elems.length == 1 && elems[0].nodeType,
+			"Verify that we have an element in our stash");
+
+		elems.gather("second");
+		assert(elems.length == 2 && elems[1].nodeType,
+			"Verify the other insertion");
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Call Return and Timers</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script src="../assets/js/asserts.js"></script>
+	<link rel="stylesheet" href="../assets/css/styles.css">	
+</head>
+<body>
+	<div id="testSubject"></div>
+  <button type="button" id="testButton">Go!</button>
+
+  <script>
+    jQuery('#testButton').click(function(){
+
+      var elem$ = jQuery("#testSubject");
+
+      elem$.html("Loading...");
+
+      jQuery.ajax({
+        url: "test.html",
+        success: function(html){
+          assert(elem$,
+                "We can see elem$, via the closure for this callback.");
+          elem$.html(html);0
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>

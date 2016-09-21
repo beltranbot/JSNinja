@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Callee</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<ul id="results"></ul>
+
+	<script>
+
+		var ninja = {
+			chirp: function(n){
+				return n > 1 ? arguments.callee(n-1) + "-chirp" : "chirp";
+			}
+		};
+
+		assert(ninja.chirp(3) == "chirp-chirp-chirp",
+			"arguments.callee is the function itself.");
+	</script>
+</body>
+</html>

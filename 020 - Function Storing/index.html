@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Function Storing</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<ul id="results"></ul>
+
+	<script>
+		var store = {
+			nextId: 1,
+			cache: {},
+			add: function(fn){
+				if (!fn.id) {
+					fn.id = store.nextId++;
+					return !!(store.cache[fn.id] = fn);
+				}
+
+			}
+		};
+
+		function ninja () { return "hello world"; }
+
+		assert(store.add(ninja),
+			"Function was safely added.");
+		assert(!store.add(ninja),
+			"But it was only added once.");
+
+		console.log(store.cache["1"]());
+	</script>
+</body>
+</html>

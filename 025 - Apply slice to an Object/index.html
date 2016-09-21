@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Apply with Math Object</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<ul id="results"></ul>
+
+	<script>
+
+		function multiMax(multi){
+        return multi * Math.max.apply(Math, 
+        	Array.prototype.slice.call(arguments,1));
+      }
+
+		assert(multiMax(3,1,2,3)==9, "3*3=9 (Firstarg, by largest.)");
+	</script>
+</body>
+</html>

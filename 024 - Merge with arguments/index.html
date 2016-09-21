@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Apply with Math Object</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<ul id="results"></ul>
+
+	<script>
+		function merge(root){
+			console.log(root);
+			console.log(arguments.length);
+			for (var i = 1; i < arguments.length; i++) {
+				for (var key in arguments[i]) {
+					root[key] = arguments[i][key];
+				}
+			}
+			console.log(root);
+			return root;
+		}
+
+		var merged = merge(
+			{name: "Batou"},
+			{city: "Niihama"});
+
+		console.log(merged);
+
+		assert(merged.name == "Batou",
+			"The original name is intact.");
+		assert(merged.city == "Niihama",
+			"And the city has been copied over.");
+						
+	</script>
+</body>
+</html>

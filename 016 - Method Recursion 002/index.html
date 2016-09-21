@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Method Recursion 002</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<ul id="results"></ul>
+
+	<script>
+
+		var ninja = {
+			chirp: function (n) {
+				return n > 1 ? ninja.chirp(n-1) + "-chrip" : "chirp";
+			}
+		};
+
+		var samurai = { chirp : ninja.chirp };
+
+		ninja = {};
+		try{
+			assert(samurai.chrip(3) == "chirp-chirp-chirp",
+				"Is this going to work?");
+		}catch(e){
+			assert(false,
+				"Uh, this ins't good! Where'd ninja.chirp go?");
+		}
+	</script>
+</body>
+</html>

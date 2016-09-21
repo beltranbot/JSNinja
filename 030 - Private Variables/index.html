@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Private Variables</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<ul id="results"></ul>
+
+	<script>
+		function Ninja(){
+			var feints = 0;
+
+			this.getFeints = function(){
+				return feints;
+			};
+
+			this.feint = function(){
+				feints++;
+			};
+		}
+
+		var ninja = new Ninja();
+
+		ninja.feint();
+
+		assert(ninja.getFeints(),
+			"We're able to access the internal feint count.");
+		assert(ninja.feints == undefined,
+			"And the private data is inaccessible to us.");
+	</script>
+</body>
+</html>

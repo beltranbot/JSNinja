@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Closure Scope 002</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<ul id="results"></ul>
+
+	<script>
+		var outerValue = "ninja";
+		var later;
+
+		function outerFunction(){
+			var innerValue = "samurai";
+
+			function innerFunction(paramValue){
+				assert(outerValue, "Inner can see the ninja.");
+				assert(innerValue == "samurai", "Inner can see the samurai.");
+				assert(paramValue, "Inner can see the wakizashi.");
+				assert(tooLate, "Inner can se the ronin.");
+			}
+
+			later = innerFunction;
+		}
+
+		assert(!tooLate,"Outer can't see the ronin");
+
+		var tooLate = 'ronin';
+
+		outerFunction();
+		later('wakizashi');
+	</script>
+</body>
+</html>

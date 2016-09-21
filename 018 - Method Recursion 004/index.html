@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Method Recursion 003</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<ul id="results"></ul>
+
+	<script>
+
+		var ninja = function myNinja(){
+			assert(ninja == myNinja,
+				"This function is named two things at once!");
+			};
+
+		ninja();
+
+		assert(typeof myNinja == "undefined",
+			"But myNinja isn't defined outside of the function.");
+		
+
+	</script>
+</body>
+</html>

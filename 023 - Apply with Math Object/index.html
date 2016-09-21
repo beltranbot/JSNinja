@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Apply with Math Object</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<ul id="results"></ul>
+
+	<script>
+		function smallest (array) {
+			return Math.min.apply(Math, array);
+		}
+
+		function largest (array) {
+			return Math.max.apply(Math, array);
+		}
+
+		assert(smallest([0,1,2,3]) == 0,
+			"Located the smallest value.");
+		assert(largest([0,1,2,3]) == 3,
+			"Located the largest value.");			
+	</script>
+</body>
+</html>

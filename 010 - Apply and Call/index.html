@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Invoking Functions</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<ul id="results"></ul>
+
+	<script>
+	function juggle () {
+		var result = 0;
+		for(var n = 0; n < arguments.length; n++){
+			result += arguments[n];
+		}
+		this.result = result;
+	}
+
+	var ninja1 = {};
+	var ninja2 = {};
+
+	juggle.apply(ninja1,[1,2,3,4]);
+	juggle.call(ninja2,5,6,7,8);
+
+	assert(ninja1.result === 10, "juggeled via apply");
+	assert(ninja2.result === 26, "juggeled via call");
+	</script>
+</body>
+</html>

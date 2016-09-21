@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Invoking Functions</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+
+</head>
+<body>
+	<ul id="results"></ul>
+	<script>
+		function creep() { return this; }
+		assert(creep() === window,
+			"Creeping in the window");
+
+		var sneak = creep;
+		assert(sneak() === window,
+			"Sneaking in the window");
+
+		var ninja1 = {
+			skulk: creep
+		};
+
+		assert(ninja1.skulk() === ninja1,
+			"The 1st ninja is skulking");
+
+		var ninja2 = {
+			skulk: creep
+		};
+
+		assert(ninja2.skulk() === ninja2,
+			"The 2nd ninja is skulking");
+		var ninja3 = {
+			skulk: function(){ return this; }
+		}
+
+		assert(ninja3.skulk() === ninja3,
+			"Ninja3 is equal to window");
+
+	</script>
+</body>
+</html>

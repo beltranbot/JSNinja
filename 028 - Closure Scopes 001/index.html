@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Function Overload</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<ul id="results"></ul>
+
+	<script>
+		var outerValue = "ninja";
+		var later;
+
+		function outerFunction(){
+			var innerValue = "samurai";
+
+			function innerFunction(){
+				assert(outerValue,"I can see the ninja.");
+				assert(innerValue,"I can see the samurai.");
+			}
+			later = innerFunction;
+		}
+
+		outerFunction();
+
+		later();
+	</script>
+</body>
+</html>

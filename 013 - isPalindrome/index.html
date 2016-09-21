@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>isPalindrome</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<ul id="results"></ul>
+
+	<script>
+		function isPalindrome (text) {
+			if (text.length <= 1) return true;
+			if (text.charAt(0) != text.charAt(text.length - 1)) return false;
+			return isPalindrome(text.substr(1, text.length - 2));
+		}
+
+		assert(isPalindrome('anna'), 'ana is a palindrome');
+		assert(isPalindrome('jhon'), "jhon isn't a palindrome");
+		assert(isPalindrome('anitalavalatina'), "anita lava la tina is a palindrome");
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Recursion</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<ul id="results"></ul>
+
+	<script>
+
+		var ninja = {
+			chirp: function(n) {
+				return n > 1 ? ninja.chirp(n-1) + "-chirp" : "chirp";
+			}
+		};
+
+		assert(ninja.chirp(3) == "chirp-chirp-chirp",
+			"An object property isn't too confusing, either.");
+	</script>
+</body>
+</html>

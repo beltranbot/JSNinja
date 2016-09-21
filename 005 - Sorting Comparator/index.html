@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Sorting Comparator</title>
+	<script>
+		function assert (value, desc) {
+			var li = document.createElement("li");
+			li.className = value ? "pass" : "fail";
+			li.appendChild(document.createTextNode(desc));
+			document.getElementById("results").appendChild( li );
+		}
+
+		window.onload = function () {
+			var values = [123,16,2058,54,10,1965,57,9];
+			values.sort(function(value1,value2){ return value2 - value1;});
+			console.log(values);
+		};
+	</script>
+	<style>
+		#results li.pass { color: green; }
+		#results li.fail { color: red; }
+	</style>
+</head>
+<body>
+	<ul id="results"></ul>
+</body>
+</html>

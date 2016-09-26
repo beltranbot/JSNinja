@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Temporary Scope 002</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		document.addEventListener("click", (function(){
+					var numClicks = 0;
+					return function(){
+						alert( ++numClicks );
+					};
+				})(), false);
+	</script>
+</body>
+</html>

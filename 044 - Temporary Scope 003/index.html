@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Temporary Scope 003</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="../assets/js/asserts.js"></script>
+	<style>
+		img{ cursor: pointer; }
+		.clickedOn{ border: 5px solid red; }
+	</style>
+</head>
+<body>
+	<img src="../images/ninja-with-pole.png" alt="ninja with pole" />
+	<script>
+		$ = function(){ alert('not jQuery!'); };
+
+		(function($){
+			$('img').on('click',function(event){
+				$(event.target).addClass('clickedOn');
+			});
+		})(jQuery);
+	</script>
+</body>
+</html>

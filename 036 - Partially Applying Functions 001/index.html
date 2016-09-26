@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Partially Applying Functions 001</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script src="../assets/js/asserts.js"></script>
+	<script src="../assets/js/partial.js"></script>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+	<script>
+		String.prototype.csv = String.prototype.split.partial(/,\s*/);
+		var results = ("Mugan, Jin, Fuu").csv();
+
+		assert(results[0]=="Mugan" &&
+			     results[1]=="Jin" &&
+			     results[2]=="Fuu",
+			     "The text values were split properly");
+	</script>
+</body>
+</html>

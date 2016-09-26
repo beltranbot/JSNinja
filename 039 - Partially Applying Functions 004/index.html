@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Partially Applying Functions 004</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script src="../assets/js/asserts.js"></script>
+	<script src="../assets/js/partial.js"></script>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+	<script>
+		var bindClick = document.body.addEventListener.partial("click",undefined,false);
+		bindClick(function(){
+			assert(true,"Click function bound via curried function.");
+		});
+	</script>
+</body>
+</html>

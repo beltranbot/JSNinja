@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Loops 001</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+	<style>
+		div { cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div>DIV 0</div>
+	<div>DIV 1</div>
+	<script>
+		var divs = document.getElementsByTagName("div");
+
+		for (var i = 0; i < divs.length; i++) {
+			divs[i].addEventListener("click", function(){
+				alert('divs #' + i + " was clicked.");
+			}, false);
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Molding Context with Functions 002</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script src="../assets/js/asserts.js"></script>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+	<button id="test">Click Me!</button>
+
+	<script>
+		function bind(context, name){
+			return function(){
+				console.log(arguments);
+				return context[name].apply(context, arguments);
+			};
+		}
+
+		var button = {
+			clicked: false,
+			click: function(){
+				this.clicked = true;
+				assert(button.clicked,
+					"The button has been clicked");
+				console.log(this);
+			}
+		};
+
+		var elem = document.getElementById("test");
+		elem.addEventListener("click", bind(button,"click"), false);
+	</script>
+</body>
+</html>

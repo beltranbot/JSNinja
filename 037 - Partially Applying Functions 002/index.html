@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Partially Applying Functions 001</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script src="../assets/js/asserts.js"></script>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+	<script>
+		Function.prototype.partial = function(){
+			var fn = this;
+			var args = Array.prototype.slice.call(arguments);
+
+			return function(){
+				var arg = 0;
+				var iargs = args.slice();
+				for (var i = 0; i < args.length && arg < arguments.length; i++) {
+					if (args[i] === undefined) {
+						iargs[i] = arguments[arg++];
+					}
+				}
+				return fn.apply(this, iargs.concat(Array.prototype.slice.call(arguments, arg)));
+			};
+		};
+
+
+		Math.maxAbove500 = Math.max.partial(500);
+		assert(Math.maxAbove500(3,4,1,6) == 500, "Max of 500, 3, 4, 1, 6 is 500");
+		assert(Math.maxAbove500(3,4,11223,1,6) == 11223, "Max of 500, 3, 4, 11223, 1, 6 is 11223");
+	</script>
+</body>
+</html>

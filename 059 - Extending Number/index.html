@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Extending Number</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		Number.prototype.add = function(num){
+			return this + num;
+		};
+
+		var n = 5;
+		assert(n.add(3) == 8,
+			"It works when the number is in a variable.");
+		assert((5).add(3) == 8,
+			"Also works if a number is wrapped in parentheses.");
+		// this code should generate and error here
+		// SyntaxError: identifier starts immediately after numeric literal
+		assert(5.add(3) == 8,
+			"What about a simple literal?");
+	</script>
+</body>
+</html>

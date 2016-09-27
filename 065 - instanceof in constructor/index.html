@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Instanceof in constructor</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		function User(first, last){
+			if (!(this instanceof arguments.callee)) {
+				return new User(first,last);
+			}
+			this.name = first + " " + last;
+		}
+
+		var name = "Rukia";
+		var user = User("Ichigo", "Kurosaki");
+
+		assert(name == "Rukia", "Name was set to Rukia.");
+		assert(user instanceof User, "User instantiated");
+		assert(user.name == "Ichigo Kurosaki",
+			"User name correctly assigned");
+	</script>
+</body>
+</html>

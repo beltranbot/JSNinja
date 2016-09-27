@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create a new Instance with a Prototyped Method</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		function Ninja(){}
+
+		Ninja.prototype.swingSword = function(){
+			return true;
+		};
+
+		var ninja1 = Ninja();
+
+		assert(ninja1 === undefined,
+			"No instance of Ninja created.");
+
+		var ninja2 = new Ninja ();
+		assert(ninja2 &&
+			     ninja2.swingSword &&
+			     ninja2.swingSword(),
+			     "Instance exists and method is callable.");
+	</script>
+</body>
+</html>

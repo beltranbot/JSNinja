@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Instance Properties 002</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+
+		function Ninja(){
+			this.swung = false;
+			this.swingSword = function(){
+				return !this.swung;
+			};
+		}
+
+		var ninja = new Ninja();
+
+		Ninja.prototype.swingSword = function() {
+			return this.swung;
+		};
+
+		
+		assert(ninja.swingSword(),
+			"Method exist, even outh of order.");
+
+	</script>
+</body>
+</html>

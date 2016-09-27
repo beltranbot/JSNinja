@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Adding properties to Object.prototype</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		Object.prototype.keys = function () {
+			var keys = [];
+			for (var p in this) keys.push(p);
+			return keys;
+		};
+
+		var obj = { a:1, b:2, c:3 };
+		assert(obj.keys().length == 3,
+			"There are three properties in this object.");
+	</script>
+</body>
+</html>

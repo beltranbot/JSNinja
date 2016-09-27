@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ForEach Implementation</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		Array.prototype.forEach = undefined;
+		if (!Array.prototype.forEach) {
+			Array.prototype.forEach = function(callback, context){
+				for (var i = 0; i < this.length; i++) {
+					callback.call(context || null, this[i], i, this);
+				}
+			};
+		}
+
+		["a","b","c"].forEach(function(value, index, array){
+			assert(value,
+				"Is in position " + index + " out of " +
+				(array.length - 1));
+		});
+	</script>
+</body>
+</html>

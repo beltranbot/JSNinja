@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hasOwnProperty()</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		Object.prototype.keys = function(){
+			var keys = [];
+			for(var i in this){
+				if (this.hasOwnProperty(i)) {
+					keys.push(i);
+				}
+			}
+			return keys;
+		};
+
+		var obj = {a:1,b:2,c:3};
+
+		assert(obj.keys().length == 3,
+			"There are three properties in this object.");
+	</script>
+</body>
+</html>

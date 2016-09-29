@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Compile a RegExp in Execution-Time</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<div class="samurai ninja"></div>
+	<div class="ninja samurai"></div>
+	<div></div>
+	<span class="samurai ninja ronin"></span>
+	<script>
+		function findClassInElements(className, type){
+			var elems =
+				document.getElementsByTagName(type || "*");
+			var regex =
+				new RegExp("(^|\\s)" + className + "(\\s|$)");
+
+			var results = [];
+
+			for (var i = 0, length = elems.length; i < length; i++) {
+				if (regex.test(elems[i].className)) {
+					results.push(elems[i]);
+				}
+			}
+			console.log(results);
+			return results;
+		}
+
+		assert(findClassInElements("ninja","div").length == 2,
+			"The right amount of div ninjas was found.");
+		assert(findClassInElements("ninja","span").length == 1,
+			"The right amount of span ninjas was found.");
+		assert(findClassInElements("ninja").length == 3,
+			"The right amount of ninjas was found.");
+	</script>
+</body>
+</html>

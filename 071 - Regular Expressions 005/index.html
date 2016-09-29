@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Regular Expressions 005</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		function testRegExp(regexp, testCase, flags = ""){
+			var eR = new RegExp(regexp, flags);
+			for (var i = 0; i < testCase.length; i++) {
+				assert(eR.test(testCase[i]),
+				regexp + " matches " + testCase[i]);
+			}			
+		}
+
+		// ? -> makes character option or can appear many times 0 or n
+		testRegExp("t?est",
+			["test","est","ttest","tttest","xest"]);
+		// + -> makes the character required to appear at least once 1 or n
+		testRegExp("t+est",
+			["test","est","ttest","tttest","xest"]);
+	  // * -> pattern may appear 0 or many times
+		testRegExp("t*est",
+			["test","est","ttest","tttest","xest"]);
+		// {n} -> specifies how many times a pattern should appear
+		testRegExp("t{3}est",
+			["test","est","ttest","tttest","xest"]);
+		// {n,m} -> can also specify a range of times a pattern may appear
+		testRegExp("t{3,5}est",
+			["test","est","ttest","tttest","xest",
+			"ttttest", "ttttttest","tttttttest"]);
+		// {n,} -> open upper range
+		testRegExp("t{3,}est",
+			["test","est","ttest","tttest","xest",
+			"ttttest", "ttttttest","tttttttest"]);
+		// ? -> putting ? makes the match with the first pattern that
+		// satisfy the regexp
+		testRegExp("a+?",
+			["aaa"]); // 3 matches
+		testRegExp("a+",
+			["aaa"]); // 1 match
+		
+	</script>
+</body>
+</html>

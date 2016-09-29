@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Regular Expressions 006</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		function testRegExp(regexp, testCase, flags = ""){
+			console.log(regexp);
+			var eR = new RegExp(regexp, flags);
+			for (var i = 0; i < testCase.length; i++) {
+				assert(eR.test(testCase[i]),
+				regexp + " matches " + testCase[i]);
+			}			
+		}
+
+		// Grouping
+		// a and b have to appear at least once
+		testRegExp("(ab)+",
+			["aaa","bbb","aabb","c","xest"]);
+		// Alternation
+		// matches either ab or cd appearing at least once
+		testRegExp("(ab)+|(cd)+",
+			["aaa","bbb","aabb","c","xest",
+			"ddcc", "aacc", "ddbb","cadb","acdb"]);
+		// Back-references
+		// allows to search for the result of a previous found pattern		
+		testRegExp(/<(\w+)>(.*)<\/\1>/,
+			["<strong>something</strong>","<div>something</div>","<ul>list</UL>"]);
+		
+	</script>
+</body>
+</html>

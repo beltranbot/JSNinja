@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>No Capturing Gruops</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		var pattern = /((?:ninja-)+)sword/;
+
+		var ninjas = "ninja-ninja-sword".match(pattern);
+
+		console.log(ninjas);
+
+		assert(ninjas.length == 2,"Only one capture was returned.");
+		assert(ninjas[1] == "ninja-ninja-",
+			"Matched both words, without any extra capture.");
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Regular Expressions 003</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		function regExpTest(arr){
+			for (var i = 0; i < arr.length; i++) {
+				assert(/[abc]/.test(arr[i]),
+					arr[i] + " is a valid match.")
+			}
+		}
+
+		// validates any combination of the charaters
+		// 'a', 'b' and 'c'
+
+		var testArr1 = ["abc", "cab", "aab",
+									 "bac", "aaa", "bbb",
+									 "ccc", "a", "b","c",
+									 "aa", "bb", "cc",
+									 "babaca"];
+    
+    regExpTest(testArr1);
+
+    var testArr2 = ["", "x", "1",
+    								"A", "B", "C"];
+
+    regExpTest(testArr2);
+	</script>
+</body>
+</html>

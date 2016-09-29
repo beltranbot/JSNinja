@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Unicode</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		var text = "\u5FCD\u8005\u30D1\u30EF\u30FC";
+		
+		var matchAll =
+			/[\w\u0000-\uFFFF_-]+/;
+
+		assert((text).match(matchAll),
+			"Our regexp matches unicode!");
+		var str = "\u0130\u0131\u0132";
+		assert( ("#" + str).match(new RegExp("#([\\w\u0128-\uFFFF_-]+)")),
+		"Verify that our RegExp matches a Unicode selector." );
+	</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Escaping Characters Selector</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		var pattern = /^((\w+)|(\\.))+$/;
+
+		var tests = [
+			"formUpdate",
+			"form\\.update\\.whatever",
+			"from\\:update",
+			"\\f\\o\\r\\m\\u\\p\\d\\a\\t\\e",
+			"\\\\\\\\",
+			"form:update"
+		];
+
+		for (var i = 0; i < tests.length; i++) {
+			assert(pattern.test(tests[i]),
+				tests[i] + " is a valid identifier");
+		};
+
+		console.log("#form\\:update".match(/#((?:\w|\\.)+)/));
+
+		assert( "#form\\:update".match(/#((?:\w|\\.)+)/)[1] 
+			== "form:update",
+		"Matching an escaped expression." );
+	</script>
+</body>
+</html>

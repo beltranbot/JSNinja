@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>exec Method()</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		var html = "<div class='test'><b>Hello</b> <i>world!</i></div>";
+		var pattern = /<(\/?)(\w+)([^>]*?)/g, match;
+		var num = 0;
+
+		while((match = pattern.exec(html))!==null){
+			assert(match.length == 4,
+				"Every match finds each tag and 3 captures.");
+			num++;
+		}
+
+		assert(num == 6,"3 opening and 3 closing tags found.");
+	</script>
+</body>
+</html>

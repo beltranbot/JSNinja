@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Global Expressions</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		var html = "<div class='test'><b>Hello</b> <i>world!</i></div>";
+		var results = html.match(/<(\/?)(\w+)([^>]*?)>/);
+
+		assert(results[0] == "<div class='test'>",
+			"The entire match.");
+		assert(results[1] == "",
+			"The (missing) slash.");
+		assert(results[2] == "div",
+			"The tag name.");
+		assert(results[3] == " class='test'",
+			"The attributes.");
+
+		var all = html.match(/<(\/?)(\w+)([^>]*?)>/g);
+		assert(all[0] == "<div class='test'>",
+			"Opening div tag.");
+		assert(all[1] == "<b>",
+			"Opening b tag.");
+		assert(all[2] == "</b>",
+			"Closing b tag.");
+		assert(all[3] == "<i>",
+			"Opening i tag.");
+		assert(all[4] == "</i>",
+			"Closing i tag.");
+		assert(all[5] == "</div>",
+			"Closing div tag.");
+
+	</script>
+</body>
+</html>

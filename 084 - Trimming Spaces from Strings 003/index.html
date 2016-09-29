@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Trimming Spaces from Strings 003</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		function trim(str){
+			var str = str.replace(/^\s\s*/,''),
+					ws = /\s/,
+					i = str.length;
+			while(ws.test(str.charAt(--i)));
+			return str.slice(0,i+1);
+		}
+		assert(trim(" #id div.class ") == "#id div.class",
+			"Extra whitespace trimmed from a slector string.");
+	</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Internet Explorer Opacity</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+  <div id="opacity"
+       style="opacity:0.5;filter:alpha(opacity=50);">      <!--#1-->
+  </div>
+	<script>
+      function getOpacity(elem) {
+        var filter = elem.style.filter;
+        console.log(elem.style.opacity);
+        return filter ?                                      //#2
+        filter.indexOf("opacity=") >= 0 ?
+            (parseFloat(filter.match(/opacity=([^)]+)/)[1]) / 100) + "" :
+            "" :
+        elem.style.opacity;
+      }
+
+		window.onload = function(){
+			assert(
+				getOpacity(document.getElementById("opacity")) == "0.5",
+				"The opacity of the element has been obtained."
+				);
+		};
+	</script>
+</body>
+</html>

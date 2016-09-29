@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create a Regular Expression</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		var re1 = /test/i;
+		var re2 = new RegExp("test","i");	
+
+		assert(re1.toString() == "/test/i",
+			"Verify the contents of the expression.");
+		assert(re1.test("TesT"),
+			"yes, it's case-insensitive.");
+		assert(re2.test("TesT"),
+			"This one is too.");
+		assert(re1.toString() == re2.toString(),
+			"The regular expressions are equal.");
+		assert(re1 != re2, "But they are different objects.");
+	</script>
+</body>
+</html>

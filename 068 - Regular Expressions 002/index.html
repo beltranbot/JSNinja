@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Regular Expressions 002</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		function isThisAzipCode(candidate){
+			return /^\d{5}-\d{4}$/.test(candidate);
+		}
+		console.log(isThisAzipCode("99999-9999"));
+		assert(isThisAzipCode("99999-9999"),
+			"99999-9999 is a valid zipcode");
+		assert(!isThisAzipCode("x9999-9999"),
+			"x9999-9999 is not valid zipcode");
+		assert(!isThisAzipCode("x9999-9999"),
+			"99999 9999 is not valid zipcode");
+	</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Central Timer Control</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+	<style>
+		#box{
+			position: absolute;
+			background-color: #00bfff;
+			border: 2px solid #00008b;
+			padding: 8px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">Hello!</div>
+	<script>
+		var timers = {
+			timerID: 0,
+			timers: [],
+
+			add: function(fn){
+				this.timers.push(fn);
+			},
+
+			start: function runNext(){
+				if (this.timerID) return;
+				(function(){
+					if (timers.timers.length > 0) {
+						for (var i = 0; i < timers.timers.length; i++) {
+							if (timers.timers[i]() === false) {
+								timers.timers.splice(i,1);
+								i--;
+							}
+						}
+						timers.timerID = setTimeout(runNext, 0);
+					}
+				})();
+			},
+			stop: function(){
+				clearTimeout(this.timerID);
+				this.timerID = 0;
+			}
+		};
+
+		var box = document.getElementById("box"), x = 0, y = 20;
+
+		timers.add(function () {
+			box.style.left = x + "px";
+			if (++x > 50) return false;
+		});
+
+		timers.add(function(){
+			box.style.top = y + "px";
+			y += 2;
+			if (y > 120) return false;
+		});
+
+		timers.start();
+	</script>
+</body>
+</html>

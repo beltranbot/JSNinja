@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>setTimeout() and setInterval()</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+	  var i = 0;
+	  var j = 0;
+
+		setTimeout(function	repeatMe(){
+			// Some long block of code...
+			console.log("i",++i);
+			setTimeout(repeatMe,10);
+		},10);
+
+		setInterval(function () {
+			/* Some long block of code... */
+			console.log("j",++j);
+		},1000);
+	</script>
+</body>
+</html>

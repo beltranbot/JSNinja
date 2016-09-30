@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>eval Method()</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		var ninja = eval("({name:'Ninja'})");
+		assert(ninja != undefined,"the ninja was created");
+		assert(ninja.name === "Ninja",
+			"and with the expected property");
+		console.log(ninja);
+		var fn = eval("(function(){return 'Ninja';})");
+		assert(typeof fn === 'function',
+			"the function was created");
+		assert(fn() === "Ninja",
+			"and returns expected value");
+
+		// without parenthesis included the evaluation
+		// doesn't process the object creation correctly
+		var ninja2 = eval("{name:'Ninja'}");
+		assert(ninja2 != undefined, "ninja2 was created");
+		assert(ninja2.name === "Ninja",
+			"and with the expected property");
+		console.log(ninja2);
+
+	</script>
+</body>
+</html>

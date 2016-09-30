@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>function constructor</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		//The last argument is the body of the constructor
+		//Any previous argument is a parameter.
+		var add = Function("a","b", "return a + b;");
+		assert(add(3,4) === 7,
+			"Function add created correctly.");
+	</script>
+</body>
+</html>

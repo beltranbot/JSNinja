@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Evaluate code in global scope</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		function globalEval(data){
+			data = data.replace(/^\s*|\s*$/,"");
+
+			if (data) {
+				var head = document.getElementsByTagName("head")[0] ||
+									 document.documentElement,
+						script = document.createElement("script");
+
+				script.type = "text/javascript";
+				script.text = data;
+
+				head.appendChild(script);
+				head.removeChild(script);
+			}
+		}
+
+		window.onload = function(){
+			(function(){
+				globalEval("var test = 5;")
+			})();
+			assert(test === 5, "The code was evaluated globally.");
+		};
+	
+	</script>
+</body>
+</html>

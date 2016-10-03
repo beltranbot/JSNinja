@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>with Statement</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+	<script src="../assets/js/globalEval.js"></script>
+</head>
+<body>
+	<script>
+		var use = "other";
+
+		var katana = {
+			isSharp: true,
+			use: function(){
+				this.isSharp = !this.isSharp;
+			}
+		};
+
+		with (katana) {
+			console.log("other", use);
+			assert(use !== "other" && typeof use == "function",
+				"use is a function from the katana object.");
+			assert(this !== katana,
+				"context isn't changed; keeps its original value");
+			assert(isSharp == true,
+				"testing issharp inside with");
+			console.log("this", this);
+		}
+		console.log(use);
+
+		assert(use == "other",
+				"outside the with use is unaffected");
+		assert(typeof isSharp === "undefined",
+			"outside the with the properties don't exist.");
+	</script>
+</body>
+</html>

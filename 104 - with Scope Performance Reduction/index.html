@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>with Scope Performance Reduction</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+</head>
+<body>
+	<script>
+		var ninja = { foo: "bar" },
+				value,
+				maxCount = 1000000,
+				n,
+				start,
+				elapsed;
+
+		// 1
+		start = new Date().getTime();
+		for (n = 0; n < maxCount; n++) {
+			value = ninja.foo;
+		}
+		elapsed = new Date().getTime() - start;
+		assert(true, "Without with: " + elapsed);
+
+		// 2
+		start = new Date().getTime();
+		with(ninja){
+			for (n = 0; n < maxCount; n++) {
+				value = foo;
+			}
+		}
+		elpased = new Date().getTime() - start;
+		assert(true, "With (with access): " + elapsed);
+
+		// 3
+		start = new Date().getTime();
+		with(ninja){
+			for (n = 0; n < maxCount; n++) {
+				foo = n;
+			};
+		}
+		elapsed = new Date().getTime() - start;
+		assert(true, "With (with assignment): " + elapsed);
+
+		// 4
+		start = new Date().getTime();
+		with(ninja){
+			for (n = 0; n < maxCount; n++) {
+				value = "no test";
+			}
+		}
+		elapsed = new Date().getTime() - start;
+		assert(true, "With (without acces): " + elapsed);
+	</script>
+</body>
+</html>

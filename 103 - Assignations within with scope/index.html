@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Assignations within with scope</title>
+	<link rel="stylesheet" href="../assets/css/styles.css">
+	<script src="../assets/js/asserts.js"></script>
+	<script src="../assets/js/globalEval.js"></script>
+</head>
+<body>
+	<script>
+		var katana = {
+			isSharp: true,
+			use: function(){
+				this.isSharp = !this.isSharp;
+			}
+		};
+
+		with (katana){
+			isSharp = false;
+
+			assert(katana.isSharp == false,
+				"poperties can be assigned");
+			cut = function(){
+				isSharp = false;
+			};
+
+			console.log("typeof katana.cut",typeof katana.cut);
+			console.log("cut inside",typeof cut);
+
+			assert(typeof katana.cut == "function",
+				"poperties can be assigned");
+		}
+
+		assert(typeof katana.cut == "function",
+			"new properties can be created on the scoped object");
+		assert(typeof window.cut == "function",
+			"new properties are created in the global scope");
+		assert(katana.isSharp == false,
+			"value change within with scopes");
+
+	</script>
+</body>
+</html>
